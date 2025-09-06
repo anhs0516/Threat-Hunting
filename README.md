@@ -9,7 +9,7 @@ SIEM과 EDR 데이터를 기반으로 위협 헌팅 시나리오를 정리한 �
 
 ## 🛠️ 기술/도구
 - Splunk, ArcSight, EyeCloudSIM
-- Genian EDR, Sysmon
+- Genian EDR 등
 - MITRE ATT&CK, Sigma
 
 ## 📂 주요 내용
