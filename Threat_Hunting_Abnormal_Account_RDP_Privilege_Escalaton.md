@@ -16,7 +16,7 @@
 
 | 데이터 소스 | 역할 |
 | :--- | :--- |
-| **Active Directory/인증 로그** | **RDP 로그온 성공 (Event ID 4624, Logon Type 10)**, 로그온 실패, RDP 세션 연결/끊김 등 **RDP 관련 계정 활동 내역** 확인. |
+| **Active Directory/인증 로그** | **RDP 로그온 성공 (Event ID 4624, Logon Type 10)**, 로그온 실패 (Event ID 4625), RDP 세션 연결/끊김 등 **RDP 관련 계정 활동 내역** 확인. |
 | **EDR 로그** | **프로세스 실행 정보**, 특히 **LSASS 프로세스**에 대한 **메모리 접근** (Credential Dumping 시도) 추적. |
 | **Windows Security Event Log** | **4624 (로그온 성공)** 및 기타 권한 변경 관련 이벤트 수집. |
 | **SIEM 연관 분석 엔진** | RDP를 이용한 **다중 호스트 접속** 이벤트와 **메모리 접근** 이벤트를 시간대별로 연관 분석. |
