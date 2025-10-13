@@ -21,6 +21,32 @@
 | **Windows Security Event Log** | **4624 (로그온 성공)** 및 기타 권한 변경 관련 이벤트 수집. |
 | **SIEM 연관 분석 엔진** | RDP를 이용한 **다중 호스트 접속** 이벤트와 **메모리 접근** 이벤트를 시간대별로 연관 분석. |
 
+
+
+### RDP 로그온 성공 실패 로그 확인
+
+
+* 이벤트 뷰어 켜기
+  
+<img width="784" height="639" alt="image" src="https://github.com/user-attachments/assets/e7c672e6-92d8-4231-bddf-40b21e1e0e1d" />
+
+* 로그온 성공 실패 로그
+  
+  Winodws 로그 - 보안
+  
+<img width="2083" height="395" alt="image" src="https://github.com/user-attachments/assets/52bceb39-2c69-478b-a47d-44b9f1bd8f37" />
+
+
+* RDP 로그온 성공 로그
+
+현재 로그 필터링 4624
+
+<img width="1538" height="926" alt="image" src="https://github.com/user-attachments/assets/34021cca-296c-4298-9ab5-67aac9d74057" />
+
+
+
+
+
 ---
 
 ## 3. Hunting 절차 및 탐지 시나리오
