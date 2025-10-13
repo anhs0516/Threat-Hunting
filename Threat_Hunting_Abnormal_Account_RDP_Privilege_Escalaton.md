@@ -43,7 +43,15 @@
 
 <img width="1538" height="926" alt="image" src="https://github.com/user-attachments/assets/34021cca-296c-4298-9ab5-67aac9d74057" />
 
+* RDP 로그온 실패 로그
 
+현재 로그 필터링 4625
+
+<img width="1863" height="213" alt="image" src="https://github.com/user-attachments/assets/64f776b8-f544-4550-ba7a-c8376b0f224e" />
+
+* 로그인 시도한 IP 확인 가능
+
+<img width="1378" height="301" alt="image" src="https://github.com/user-attachments/assets/d5ca955e-f620-4b02-a09e-a75f645987d0" />
 
 
 
