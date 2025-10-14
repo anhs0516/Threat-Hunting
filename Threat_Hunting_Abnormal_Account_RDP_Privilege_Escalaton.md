@@ -59,8 +59,24 @@
 
 ## 3. Hunting 절차 및 탐지 시나리오
 
-#### (1) 1단계: RDP를 이용한 비정상적인 다중 호스트 횡적 이동(Lateral Movement) 탐색
+#### 1단계: RDP를 이용한 비정상적인 다중 호스트 횡적 이동(Lateral Movement) 탐색
 
 **목적:** 탈취된 계정이 짧은 시간 내에 RDP를 사용하여 다수의 서버에 접속하는 패턴을 탐지합니다.
 
+```Splunk
+
+index=auth_logs event_id="4624" 
+| stats dc(dstn_host) as unique_rdp_hosts_count, earliest(_time) as first_access, latest(_time) as last_access by user, src_ip
+| eval time_diff_sec = last_access - first_access
+| where unique_rdp_hosts_count >= 5 AND time_diff_sec <= 900
+| sort -unique_rdp_hosts_count
+
+설명 : 900초(15분)이내 동일 계정이 5개 이상의 고유 호스트에 RDP 로그온 성공 이력을 식별
+(정상 사용자는 짧은 시간 내 다수 호스트에 RDP 시도하지 않는다는 가정)
+
+```
+
+#### 2단계 : 자격 증명 덤프 (Credential Dumping) 시도 탐색
+
+**목적:** 1단계에서 식별된 호스트에서 권한 상승을 위한 LSASS 메모리 접근 시도를 탐지합니다.
 
