@@ -71,10 +71,11 @@ index=auth_logs event_id="4624"
 | where unique_rdp_hosts_count >= 5 AND time_diff_sec <= 900
 | sort -unique_rdp_hosts_count
 
+```
+
 설명 : 900초(15분)이내 동일 계정이 5개 이상의 고유 호스트에 RDP 로그온 성공 이력을 식별
 (정상 사용자는 짧은 시간 내 다수 호스트에 RDP 시도하지 않는다는 가정)
 
-```
 
 #### 2단계 : 자격 증명 덤프 (Credential Dumping) 시도 탐색
 
@@ -86,7 +87,7 @@ index=sec_edr process_name IN ("procdump.exe", "powershell.exe", "mimikatz.exe",
 | stats count by user, host, process_name, command_line
 | where count > 0
 
-설명 : lsass.exe 메모리 접근을 시도하거나 , Credential Dumping에 사용되는 도구(procdump.exe, mimikatz.exe 등)의 실행 이력을 탐지합니다.
-
 ```
+
+설명 : lsass.exe 메모리 접근을 시도하거나 , Credential Dumping에 사용되는 도구(procdump.exe, mimikatz.exe 등)의 실행 이력을 탐지합니다.
 
