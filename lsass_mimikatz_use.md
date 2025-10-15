@@ -46,8 +46,8 @@ mimikatz # sekurlsa::logonpasswords
 
 ```
 
-사진
-사진
+<img width="966" height="507" alt="image" src="https://github.com/user-attachments/assets/d6fe99cf-2cc5-413f-a7b6-e7c94994872a" />
+
 
 관리자계정이 아닌 다른 계정으로 mimikatz를 실행해주시고 위와 같이 명령어를 입력해주시면 위와 같이 정보를 얻을 수 있습니다.
 
