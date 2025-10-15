@@ -80,3 +80,13 @@ index=auth_logs event_id="4624"
 
 **목적:** 1단계에서 식별된 호스트에서 권한 상승을 위한 LSASS 메모리 접근 시도를 탐지합니다.
 
+```
+
+index=sec_edr process_name IN ("procdump.exe", "powershell.exe", "mimikatz.exe", "rclone.exe") OR (target_process_name="lsass.exe" AND access_type="read_memory")
+| stats count by user, host, process_name, command_line
+| where count > 0
+
+설명 : lsass.exe 메모리 접근을 시도하거나 , Credential Dumping에 사용되는 도구(procdump.exe, mimikatz.exe 등)의 실행 이력을 탐지합니다.
+
+```
+
