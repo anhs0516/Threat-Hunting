@@ -91,3 +91,16 @@ index=sec_edr process_name IN ("procdump.exe", "powershell.exe", "mimikatz.exe",
 
 설명 : lsass.exe 메모리 접근을 시도하거나 , Credential Dumping에 사용되는 도구(procdump.exe, mimikatz.exe 등)의 실행 이력을 탐지합니다.
 
+#### 3단계 : RDP Lateral Movement(횡적 이동)과 권한 상승 징후의 시간적 연관성 분석(SIEM)
+
+**목적:** 의심스러운 RDP 횡적 이동 이벤트가 Credential Dumping 시도로 이어지는지 30분 이내의 시간적 관계를 통해 공격 시도를 확정합니다.
+
+```splunk
+
+index=sec_edr OR index=auth_logs
+| transaction user startswith(eval(match(event_id, "4624") AND logon_type="10")) endswith(eval(match(target_process_name, "lsass.exe") AND access_type="read_memory")) maxspan=30m
+| stats count(eval(match(event_id, "4624"))) as RDP_Success_Count, count(eval(match(target_process_name, "lsass.exe"))) as Credential_Dumping by user
+| where RDP_Success_Count >= 3 AND Credential_Dumping > 0
+
+```
+
