@@ -25,8 +25,9 @@ BPFdoor는 중국계 위협그룹인 **Red Menshen(레드멘션)** 이 주로 �
 || Obfuscated Files or Information |  T1027 | 난독화/암호화된 스크립트, 실행 파일 사용|
 
 
-* 왜 MITRE ATT&CK을 매핑했는지?
-- MITRE ATT&CK은 전세계 보안 전문가들이 **공격자의 전술(Tactics)과 기법 (Techniques)** 을 체계적으로 정리해놓은 지식 베이스입니다.
+#### 왜 MITRE ATT&CK을 매핑했는지?
+
+MITRE ATT&CK은 전세계 보안 전문가들이 **공격자의 전술(Tactics)과 기법 (Techniques)** 을 체계적으로 정리해놓은 지식 베이스입니다.
 
 BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로드, 권한 상승, 내부 정찰 등)** 의 APT공격이 발생했을 것입니다.
 
