@@ -58,6 +58,6 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
    - 영향 : 최초 보안 경계 우회 성공, 공격자가 웹 서버를 통해 원격으로 명령을 실행할 수 있는 **지속적인 통로**를 확보했습니다.
   
 2. 권한 상승 및 백도어 설치 (Privilege Escalation & Backdoor Deployment)
-
+  - Low-Privilege 셸 획득 : 웹서버 계정(tomcat, www-data) 권한으로 시스템 내부에 진입, uname -a , cat /etc/passwd 등으로 환경 탐색 &rightarrow; 추가 권한 상승 루트 파악
 ---
 
