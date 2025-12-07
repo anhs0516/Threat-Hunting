@@ -53,11 +53,15 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
 25년 4월 SKT 사건을 웹쉘 RCE 시나리오를 가설적으로 구성해보겠습니다. 실제와는 다를 수 있고 웹공격이라는 가정하에 작성하겠습니다.
 
 1. 초기 침투 및 시스템 장악
-   - 취약점 악용 : 공격자는 Oracle Weblogic, Tomcat 혹은 다른 웹 앱 취약점이 존재(가정)를 사전에 스캔을 통해 확인
-   - Web Shell 업로드 : 해당 취약점을 이용하여 curl -F file=@shell.php http://target.com/upload.php 혹은 wget 등의 명령을 통해 시스템 내부에 Web Shell을 은밀하게 업로드하는데 성공했습니다.
-   - 영향 : 최초 보안 경계 우회 성공, 공격자가 웹 서버를 통해 원격으로 명령을 실행할 수 있는 **지속적인 통로**를 확보했습니다.
+     - 취약점 악용 : 공격자는 Oracle Weblogic, Tomcat 혹은 다른 웹 앱 취약점이 존재(가정)를 사전에 스캔을 통해 확인
+     - Web Shell 업로드 : 해당 취약점을 이용하여 curl -F file=@shell.php http://target.com/upload.php 혹은 wget 등의 명령을 통해 시스템 내부에 Web Shell을 은밀하게 업로드하는데 성공했습니다.
+     - 영향 : 최초 보안 경계 우회 성공, 공격자가 웹 서버를 통해 원격으로 명령을 실행할 수 있는 **지속적인 통로**를 확보했습니다.
   
-2. 권한 상승 및 백도어 설치 (Privilege Escalation & Backdoor Deployment)
-  - Low-Privilege 셸 획득 : 웹서버 계정(tomcat, www-data) 권한으로 시스템 내부에 진입, uname -a , cat /etc/passwd 등으로 환경 탐색 &rightarrow; 추가 권한 상승 루트 파악
+3. 권한 상승 및 백도어 설치 (Privilege Escalation & Backdoor Deployment)
+    - Low-Privilege 셸 획득 : 웹서버 계정(tomcat, www-data) 권한으로 시스템 내부에 진입, uname -a , cat /etc/passwd 등으로 환경 탐색 &rightarrow; 추가 권한 상승 루트 파악
+    - Root 권한 확보 (Escalation) : SUID 파일, 커널 버그, sudo misconfig 등 악용 &rightarrow; root 권한 상승 &rightarrow; BPFdoor 설치 가능 (커널 소켓 필터 등록에는 높은 권한 필요)
+
+4. BPFdoor 업로드 & 실행
+    - 
 ---
 
