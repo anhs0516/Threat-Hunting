@@ -43,7 +43,7 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
 * Magic Packet 기반 통신 여부 식별
 * BPFdoor 프로세스 및 파일 흔적 탐지
 * Network-level 이상 징후 분석
-* Sysmon/EDR 기반 이벤트 상관 분석
+* EDR 기반 이벤트 상관 분석
 * 실제 환경 적용 가능한 탐지 로직 개발
 
 ---
