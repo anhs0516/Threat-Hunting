@@ -57,11 +57,19 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
       - Web Shell 업로드 : 해당 취약점을 이용하여 curl -F file=@shell.php http://target.com/upload.php 혹은 wget 등의 명령을 통해 시스템 내부에 Web Shell을 은밀하게 업로드하는데 성공했습니다.
       - 영향 : 최초 보안 경계 우회 성공, 공격자가 웹 서버를 통해 원격으로 명령을 실행할 수 있는 **지속적인 통로**를 확보했습니다. 
   
-3. 권한 상승 및 백도어 설치 (Privilege Escalation & Backdoor Deployment)
+2. 권한 상승 및 백도어 설치 (Privilege Escalation & Backdoor Deployment)
     - Low-Privilege 셸 획득 : 웹서버 계정(tomcat, www-data) 권한으로 시스템 내부에 진입, uname -a , cat /etc/passwd 등으로 환경 탐색 &rightarrow; 추가 권한 상승 루트 파악
     - Root 권한 확보 (Escalation) : SUID 파일, 커널 버그, sudo misconfig 등 악용 &rightarrow; root 권한 상승 &rightarrow; BPFdoor 설치 가능 (커널 소켓 필터 등록에는 높은 권한 필요)
 
-5. BPFdoor 업로드 & 실행
-    - 
+3. BPFdoor 업로드 & 실행
+    - 디스크에 기록되지 않고 메모리상에서만 운영되는 특징이 있는 /dev/shm 디렉터리를 이용하여 /dev/shm/kdmtmpflush 등 임시 디렉터리에 복사 &rightarrow; 원본 파일 삭제
+    - 백도어 프로세스가 부모 프로세스와 분리되며 메모리에 상주
+    - BPF 필터 setting &rightarrow; **매직 패킷**이 올때만 셸 연결을 열어둠
+  
+4. HSS DB 접근 및 자료 탈취
+    - BPFdoor를 통해 공격자가 언제든지 원할때 재접속 가능함
+    - HSS 내부 DB(USIM 인증키, 가입자 식별번호인 IMSI 등)에 대량 쿼리 &rightarrow; 결과 파일 유출
+    - 결론적으로 SKT 고객 유심 정보 2300만 대규모 유출 사태 발생
+
 ---
 
