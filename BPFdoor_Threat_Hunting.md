@@ -62,8 +62,8 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
     - Root 권한 확보 (Escalation) : SUID 파일, 커널 버그, sudo misconfig 등 악용 &rightarrow; root 권한 상승 &rightarrow; BPFdoor 설치 가능 (커널 소켓 필터 등록에는 높은 권한 필요)
 
 3. BPFdoor 업로드 & 실행
-    - 디스크에 기록되지 않고 메모리상에서만 운영되는 특징이 있는 /dev/shm 디렉터리를 이용하여 /dev/shm/kdmtmpflush 등 임시 디렉터리에 복사 &rightarrow; 원본 파일 삭제
-    - 백도어 프로세스가 부모 프로세스와 분리되며 메모리에 상주
+    - **디스크에 기록되지 않고 메모리상에서만 운영**되는 특징이 있는 **/dev/shm** 디렉터리를 이용하여 **/dev/shm/kdmtmpflush** 등 임시 디렉터리에 복사 &rightarrow; 원본 파일 삭제
+    - 백도어 프로세스가 **부모 프로세스와 분리되며 메모리에 상주**
     - BPF 필터 setting &rightarrow; **매직 패킷**이 올때만 셸 연결을 열어둠
   
 4. HSS DB 접근 및 자료 탈취
