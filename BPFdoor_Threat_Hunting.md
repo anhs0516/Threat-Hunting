@@ -54,7 +54,7 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
 
 1. 초기 침투 및 시스템 장악
       - 취약점 악용 : 공격자는 Oracle Weblogic, Tomcat 혹은 다른 웹 앱 취약점이 존재(가정)를 사전에 스캔을 통해 확인
-      - Web Shell 업로드 : 해당 취약점을 이용하여 curl -F file=@shell.php http://target.com/upload.php 혹은 wget 등의 명령을 통해 시스템 내부에 Web Shell을 은밀하게 업로드하는데 성공했습니다.
+      - Web Shell 업로드 : 해당 취약점을 이용하여 curl -F file=@shell.php hxxp://target.com/upload.php 혹은 wget 등의 명령을 통해 시스템 내부에 Web Shell을 은밀하게 업로드하는데 성공했습니다.
       - 영향 : 최초 보안 경계 우회 성공, 공격자가 웹 서버를 통해 원격으로 명령을 실행할 수 있는 **지속적인 통로**를 확보했습니다. 
   
 2. 권한 상승 및 백도어 설치 (Privilege Escalation & Backdoor Deployment)
