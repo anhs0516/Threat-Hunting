@@ -91,6 +91,7 @@ struct magic_packet {
     unsigned short port;
     char pass[14];   // "justforfun" 등 하드코딩
 };
+```
 
 3. 은폐 지속화 기법
 
@@ -99,12 +100,12 @@ struct magic_packet {
 | **프로세스 위장**           |  /sbin/udevd -d, /sbin/auditd -n 등 정상 데몬명 사용으로 위장 |
 | **메모리 상주**           |  /dev/shm으로 복사 후 원본 파일을 삭제하여 디스크상 존재하지 않고 메모리에만 상주 |
 | **방화벽(iptables) 변조**   | 새로운 포트 오픈 후 방화벽 설정하여 공격자 IP로부터 전달받은 패킷을 오픈한 포트로 리다이렉트  |
-| **프로세스 위장**           |  |
+| **PTY 쉘**           | /dev/ptmx 연결을 통해 정상 사용자로 위장 &rightarrow; history 조작등을 통한 기록 방지 설정 |
 
 
 * /sbin/udevd -d 커널의 장치 관리자 역할을 하는 핵심 프로세스
 * /sbin/auditd -n 리눅스 시스템에서 보안 감사(audit)를 담당하는 핵심 데몬(daemon)
-```
+
 
 
 ---
