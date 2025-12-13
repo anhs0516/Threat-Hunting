@@ -106,6 +106,9 @@ struct magic_packet {
 * /sbin/udevd -d 커널의 장치 관리자 역할을 하는 핵심 프로세스
 * /sbin/auditd -n 리눅스 시스템에서 보안 감사(audit)를 담당하는 핵심 데몬(daemon)
 
+#### 전체 과정 요약
+
+<img width="1372" height="942" alt="image" src="https://github.com/user-attachments/assets/74d5338d-0302-474d-878b-4b1162879bee" />
 
 
 ---
