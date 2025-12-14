@@ -150,4 +150,15 @@ struct magic_packet {
 |4|상관관계 및 가중치 기반 경보|호스트 이상 행위와 네트워크 이상 행위를 결합하여 오탐을 줄인 최종 경보 생성|
 |5|로직 자동화 및 튜닝|"탐지 로직을 Splunk/SIEM에 배포하고, 오탐을 반복적으로 제거하여 운영 안정화"|
 
+### 🔹 3-2. 상세 절차 및 탐지 시나리오 
+
+#### Phase 1: 🛡️ 호스트 기반 비정상 행위 헌팅 (EDR/Linux Log)
+
+- **임시 경로 실행 및 파일 위장** : **/dev/shm/** 또는 /tmp/에서 **kdmtmpflush**, **udevd**, **auditd** 등 **시스템 데몬** 이름으로 위장하여 실행된 프로세스
+<img width="1379" height="116" alt="image" src="https://github.com/user-attachments/assets/f7f918e5-6884-4af3-81da-22317f55f221" />
+
+
+
+  
+
 ---
