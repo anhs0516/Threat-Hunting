@@ -154,8 +154,12 @@ struct magic_packet {
 
 #### Phase 1: 🛡️ 호스트 기반 비정상 행위 헌팅 (EDR/Linux Log)
 
-- **임시 경로 실행 및 파일 위장** : **/dev/shm/** 또는 /tmp/에서 **kdmtmpflush**, **udevd**, **auditd** 등 **시스템 데몬** 이름으로 위장하여 실행된 프로세스
-<img width="1379" height="116" alt="image" src="https://github.com/user-attachments/assets/f7f918e5-6884-4af3-81da-22317f55f221" />
+|탐지 시나리오 | 상세 설명 |
+|-------------|----------|
+|**임시 경로 실행 및 파일 위장**       |  **/dev/shm/** 또는 /tmp/에서 **kdmtmpflush**, **udevd**, **auditd** 등 **시스템 데몬** 이름으로 위장하여 실행된 프로세스        |
+| **PID 이름 불일치**  | EDR 로그에서 프로세스 이름과 해당 프로세스의 실제 커맨드 라인 경로에 있는 파일 이름이 일치하지 않는 경우    |
+
+  <img width="1379" height="116" alt="image" src="https://github.com/user-attachments/assets/f7f918e5-6884-4af3-81da-22317f55f221" />
 
 그 외 정상 프로세스 위장하는 목록
 <img width="1369" height="199" alt="image" src="https://github.com/user-attachments/assets/6cd99c12-d976-4bc3-add0-4cc91f922367" />
