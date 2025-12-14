@@ -168,9 +168,16 @@ struct magic_packet {
 
 [Ahnlab EDR]
 
-의심스러운 프로세스가 /dev/shm 경로에 복사하고 실행 권한을 부여하여 권한 상승
+의심스러운 프로세스가 자신을 /dev/shm 경로에 복사하고 실행 권한을 부여하는 행위 탐지
 
   <img width="1635" height="857" alt="image" src="https://github.com/user-attachments/assets/26442448-99ca-4576-ac31-918689e992e8" />
+
+BPFdoor는 비밀번호에 매칭되는 명령을 전달받을 경우 특정 포트를 오픈하고 방화벽을 설정하여 공격자로부터 수신되는 패킷들을 리다이렉트함
+
+새로운 규칙 추가/제거 행위를 탐지
+
+<img width="1557" height="1043" alt="image" src="https://github.com/user-attachments/assets/1bc48282-947b-48c5-baef-83b5baf9bf50" />
+
 
 
 ---
