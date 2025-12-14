@@ -157,6 +157,8 @@ struct magic_packet {
 - **임시 경로 실행 및 파일 위장** : **/dev/shm/** 또는 /tmp/에서 **kdmtmpflush**, **udevd**, **auditd** 등 **시스템 데몬** 이름으로 위장하여 실행된 프로세스
 <img width="1379" height="116" alt="image" src="https://github.com/user-attachments/assets/f7f918e5-6884-4af3-81da-22317f55f221" />
 
+그 외 정상 프로세스 위장하는 목록
+<img width="1369" height="199" alt="image" src="https://github.com/user-attachments/assets/6cd99c12-d976-4bc3-add0-4cc91f922367" />
 
 
   
