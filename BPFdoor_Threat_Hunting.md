@@ -180,4 +180,9 @@ BPFdoor는 비밀번호에 매칭되는 명령을 전달받을 경우 특정 포
 
 #### Phase 3: 네트워크 기반 C2 통신 탐지
 
+BPFdoor의 의심스러운 행위를 탐지
+
+<img width="1654" height="590" alt="image" src="https://github.com/user-attachments/assets/fd4ce34f-e137-4443-a9cf-96627660d8d2" />
+
+
 ---
