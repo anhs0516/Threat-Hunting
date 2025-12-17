@@ -220,7 +220,8 @@ alert udp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor UDP Magic Byte 
 
 - EPP를 활용하여 악성코드 차단 외에도 탐지현황, 정책, 이벤트 등을 통합관리하여 엔드포인트 보안을 한 층 강화할 수 있음
 
-- 
+- EDR을 통해 엔드포인트에서 발생하는 모든 행위를 모니터링 및 로깅하고 행위 연관 분석을 통해 피해 최소화 및 재발 방지 체계 수립
+
 
 
 
