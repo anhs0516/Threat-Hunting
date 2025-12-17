@@ -212,5 +212,16 @@ alert udp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor UDP Magic Byte 
 ```
 
 
-#### Phase 5 : 변종(Mutant) BPFdoor 탐지
+#### Phase 5 : 변종(Mutant) BPFdoor 예방, 탐지 및 차단 대응
+
+각종 솔루션에서 다른 위협뿐만 아니라 BPFdoor 위협을 사전에 예방 및 차단
+
+- 방화벽 솔루션을 활용해 비인가 사용자 및 기기의 서버 접속을 사전 차단하여 잠재적 피해를 최소화할 수 있음
+
+- EPP를 활용하여 악성코드 차단 외에도 탐지현황, 정책, 이벤트 등을 통합관리하여 엔드포인트 보안을 한 층 강화할 수 있음
+
+- 
+
+
+
 ---
