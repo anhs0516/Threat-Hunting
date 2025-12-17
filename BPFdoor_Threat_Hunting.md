@@ -147,8 +147,8 @@ struct magic_packet {
 |1|호스트 기반 비정상 행위 헌팅|정상 프로세스로 위장한 BPFdoor 프로세스 존재 유무 식별|
 |2| 실행 권한 확보 및 보안 설정 무력화 | 악성 파일 실행을 위한 권한 변경(chmod) 및 방화벽 조작 탐지|
 |3|네트워크 기반 C2 통신 탐지|Magic Packet 수신 후 발생하는 공격자 서버와의 통신 탐지|
-|4|상관관계 및 가중치 기반 경보|호스트 이상 행위와 네트워크 이상 행위를 결합하여 오탐을 줄인 최종 경보 생성|
-|5|로직 자동화 및 튜닝|탐지 로직을 Splunk/SIEM에 배포하고, 오탐을 반복적으로 제거하여 운영 안정화|
+|4|알려진 BPFdoor 탐지 (Signiture-based Detection) |알려진 매직패킷 (0x5293) 등 고정된 특징을 기반으로 초기 모델 탐지|
+|5|변종(Mutant) BPFdoor 탐지(Behavior-based Detection) |매직 패킷 변경 등 변종을 행위 기반으로 탐지|
 
 ### 🔹 3-2. 상세 절차 및 탐지 시나리오 
 
@@ -185,7 +185,7 @@ BPFdoor의 의심스러운 행위를 탐지
 <img width="1654" height="590" alt="image" src="https://github.com/user-attachments/assets/fd4ce34f-e137-4443-a9cf-96627660d8d2" />
 
 
-#### Phase 4 : 상관관계 및 가중치 기반 경보
+#### Phase 4 : 알려진 BPFdoor 탐지
 
 
 
