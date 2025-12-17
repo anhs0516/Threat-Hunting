@@ -148,7 +148,7 @@ struct magic_packet {
 |2| 실행 권한 확보 및 보안 설정 무력화 | 악성 파일 실행을 위한 권한 변경(chmod) 및 방화벽 조작 탐지|
 |3|네트워크 기반 C2 통신 탐지|Magic Packet 수신 후 발생하는 공격자 서버와의 통신 탐지|
 |4|알려진 BPFdoor 탐지 (Signiture-based Detection) |알려진 매직패킷 (0x5293) 등 고정된 특징을 기반으로 초기 모델 탐지|
-|5|변종(Mutant) BPFdoor 탐지(Behavior-based Detection) |매직 패킷 변경 등 변종을 행위 기반으로 탐지|
+|5|변종(Mutant) BPFdoor 탐지 | 솔루션들을 통한 매직 패킷 변경 등 변종 탐지|
 
 ### 🔹 3-2. 상세 절차 및 탐지 시나리오 
 
@@ -211,4 +211,6 @@ alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor Mutant Variant 
 alert udp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor UDP Magic Byte (0x7255)"; content:"|72 55|"; fast_pattern; classtype:trojan-activity; sid:1010012; rev:1;)
 ```
 
+
+#### Phase 5 : 변종(Mutant) BPFdoor 탐지
 ---
