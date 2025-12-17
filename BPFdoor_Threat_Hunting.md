@@ -76,7 +76,7 @@ BPFdoor가 활동했다는 것은 그전에 **이미 여러 단계(웹쉘 업로
 ### 🔹 1-5. 동작 원리 정리
 
 1. 매직 바이트 & 다중 프로토콜 사용
-   - 트리거 : 일반적으로 TCP/UDP (0x7255) , ICMP(0x5293) 매직 바이트 수신 시만 활성화
+   - 트리거 : 일반적으로 TCP (0x5293) , UDP/ICMP(0x7255) 매직 바이트 수신 시만 활성화
    - 지원 프로토콜 : TCP, UDP, ICMP 모두 가능
    - 허용 포트 : 포트 스캔 회피를 위한 80/443/22 등 일반 서비스 포트 재사용
   
@@ -185,7 +185,18 @@ BPFdoor의 의심스러운 행위를 탐지
 <img width="1654" height="590" alt="image" src="https://github.com/user-attachments/assets/fd4ce34f-e137-4443-a9cf-96627660d8d2" />
 
 
-#### Phase 4 : 알려진 BPFdoor 탐지
+#### Phase 4 : 알려진 BPFdoor 탐지(시그니처 기반)
+
+목표: BPFdoor의 초기 버전(Original)이 가진 고유한 특징(Signature)을 식별하여 빠르게 탐지합니다. 가장 기초적인 방어선입니다.
+
+# 1. 초기 버전 TCP (매직값: 0x5293) - 위치 무관 검색, 초기에는 3way handshake 과정을 무시하고 들어왔기 때문에 flow:stateless
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor Magic Byte (0x5293)"; flow:stateless; content:"|52 93|"; fast_pattern; sid:1010011; rev:1;)
+
+# 2. TCP 변종 (매직값: 0x39393939) - 위치 무관 검색, 변종으로 정상인 척 위장하기 때문에 정상적인 TCP 연결을 맺고 들어와 flow:established 
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor Mutant Variant Check (0x39393939)"; flow:established,to_server; content:"|39 39 39 39|"; fast_pattern; sid:101010; rev:1;)
+
+# 3. UDP/ICMP (매직값: 0x7255)
+alert udp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor UDP Magic Byte (0x7255)"; content:"|72 55|"; fast_pattern; classtype:trojan-activity; sid:1010012; rev:1;)
 
 
 
