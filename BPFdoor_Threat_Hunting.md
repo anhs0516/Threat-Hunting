@@ -189,15 +189,26 @@ BPFdoor의 의심스러운 행위를 탐지
 
 목표: BPFdoor의 초기 버전(Original)이 가진 고유한 특징(Signature)을 식별하여 빠르게 탐지합니다. 가장 기초적인 방어선입니다.
 
-# 1. 초기 버전 TCP (매직값: 0x5293) - 위치 무관 검색, 초기에는 3way handshake 과정을 무시하고 들어왔기 때문에 flow:stateless
-alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor Magic Byte (0x5293)"; flow:stateless; content:"|52 93|"; fast_pattern; sid:1010011; rev:1;)
+# 1. 초기 버전 TCP (매직값: 0x5293)
 
-# 2. TCP 변종 (매직값: 0x39393939) - 위치 무관 검색, 변종으로 정상인 척 위장하기 때문에 정상적인 TCP 연결을 맺고 들어와 flow:established 
+특징 : 위치 무관 검색, 초기에는 3way handshake 과정을 무시하고 들어왔기 때문에 flow:stateless
+
+```
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor Magic Byte (0x5293)"; flow:stateless; content:"|52 93|"; fast_pattern; sid:1010011; rev:1;)
+```
+
+# 2. TCP 변종 (매직값: 0x39393939)
+
+특징 : 위치 무관 검색, 변종으로 정상인 척 위장하기 때문에 정상적인 TCP 연결을 맺고 들어와 flow:established 
+
+```
 alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor Mutant Variant Check (0x39393939)"; flow:established,to_server; content:"|39 39 39 39|"; fast_pattern; sid:101010; rev:1;)
+```
 
 # 3. UDP/ICMP (매직값: 0x7255)
+
+```
 alert udp $EXTERNAL_NET any -> $HOME_NET any (msg:"Linux/BPFDoor UDP Magic Byte (0x7255)"; content:"|72 55|"; fast_pattern; classtype:trojan-activity; sid:1010012; rev:1;)
-
-
+```
 
 ---
